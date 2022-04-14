@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tobor Rights</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body {% if theme != "system" %}class="{{ theme }}"{% endif %}>
+    <header>
+        <h1>Book a HumanTobor</h1>
+        <div aria-label="theme selector">
+            <button id="dark" title="dark theme" aria-label="dark theme" class="exception {% if theme == "dark" %}active{% endif %}">
+                <span class="material-icons">dark_mode</span>
+            </button>
+            <button id="light" title="light theme" aria-label="light theme" class="exception {% if theme == "light" %}active{% endif %}">
+                <span class="material-icons">light_mode</span>
+            </button>
+            <button id="system" title="system theme" aria-label="system theme" class="exception {% if theme == "system" %}active{% endif %}">
+                <span class="material-icons">settings_brightness</span>
+            </button>
+        </div>
+    </header>
+    <form>
+        <div class="input-field">
+            <input type="text" placeholder="UTD123456" id="netid">
+            <label for="netid">NetID</label>
+        </div>
+        <button type="submit">Order</button>
+    </form>
+    <footer>
+        © 2022 | Comets Against Computer Programming
+    </footer>
+</body>
+<script src="/scripts/cash.min.js"></script>
+<script src="/scripts/main.js"></script>
+</html>
