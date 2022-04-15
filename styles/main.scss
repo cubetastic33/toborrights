@@ -2,14 +2,16 @@
 
 @mixin theme($dark) {
     @if $dark {
-        --background: #212128;
-        --background-dark: #18181c;
-        --foreground: white;
+        --background: #242421;
+        --background-dark: #141414;
+        --background-hover: #353532;
+        --foreground: #fff;
         --accent: #fdcb13;
         --shadow: rgba(15, 15, 15, .5);
     } @else {
         --background: #fffde7;
-        --background-dark: #E1EFFF;
+        --background-dark: #fff8e1;
+        --background-hover: #fff2e1;
         --foreground: black;
         --accent: #fdcb13;
         --shadow: rgba(15, 15, 15, .25);
@@ -65,8 +67,8 @@
 // Actual styles
 
 body {
-    background-color: #272727;
-    color: #fff;
+    background-color: var(--background);
+    color: var(--foreground);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -85,7 +87,7 @@ main {
 }
 
 #check-email {
-    background-color: #141414;
+    background-color: var(--background-dark);
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -116,7 +118,7 @@ p {
     justify-content: center;
 
     .divider {
-        border: 1px solid #fff;
+        border: 1px solid var(--foreground);
         height: 1.5em;
         margin: 0 1em 0 2em;
     }
@@ -140,8 +142,9 @@ label {
 input {
     appearance: none;
     background: transparent;
+    border-color: var(--foreground);
     border-width: 0 0 2px 0;
-    color: #fff;
+    color: var(--foreground);
     font-size: 1.2rem;
     margin: .5em 0;
     text-align: center;
@@ -168,12 +171,12 @@ button {
 
 button.text {
     background: none;
-    color: #fff;
+    color: var(--foreground);
     transition: background-color .15s ease-in-out;
 }
 
 button.text:hover {
-    background-color: #353535;
+    background-color: var(--background-hover);
 }
 
 @media screen and (min-width: 760px) {
