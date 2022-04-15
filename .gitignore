@@ -1,3 +1,6 @@
 .idea/
-.venv/
-__pycache__/
+.parcel-cache/
+node_modules/
+dist/
+/styles/*.css
+/styles/*.css.map
