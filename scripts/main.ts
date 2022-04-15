@@ -8,7 +8,7 @@ const $toast = $("#toast");
 const $signed_out = $(".signed-out");
 const $signed_in = $(".signed-in");
 
-function show_toast(message, duration = 2000) {
+function show_toast(message: string, duration: number = 2000) {
     $toast.text(message).show();
     // After duration, slide the toast out of view
     setTimeout(() => $toast.addClass("slide-down"), duration);
@@ -36,7 +36,7 @@ supabase.auth.onAuthStateChange(update_dom);
 $("form").on("submit", e => {
     e.preventDefault();
     // Sign the user in
-    const email = $("#netid").val() + "@utdallas.edu";
+    const email: string = $("#netid").val() + "@utdallas.edu";
     supabase.auth.signIn({ email })
         .then(response => {
             if (response.error) {
