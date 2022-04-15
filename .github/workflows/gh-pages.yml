@@ -1,0 +1,32 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+
+    - name: Build with Parcel
+      run: |
+        npm install
+        npx parcel build index.html --public-url 'cubetatstic33.github.io/toborrights/'
+
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: dist
+        keep_history: true
+        allow_empty_commit: false
+        verbose: true
+        jekyll: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
