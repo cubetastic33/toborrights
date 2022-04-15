@@ -16,7 +16,7 @@ jobs:
     - name: Build with Parcel
       run: |
         npm install
-        npx parcel build index.html --public-url 'cubetatstic33.github.io/toborrights/'
+        npx parcel build index.html --public-url '/toborrights'
 
     - name: Deploy to GitHub Pages
       if: success()
