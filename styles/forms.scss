@@ -1,5 +1,13 @@
 // Form elements
 
+#restaurants, form {
+    transition: opacity .1s ease-out;
+}
+
+.fade {
+    opacity: 0;
+}
+
 form {
     background-color: var(--background-dark);
     border-radius: 10px;

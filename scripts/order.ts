@@ -25,7 +25,7 @@ function update_dom() {
         $status.hide();
         $signed_out.show();
         $order_details.hide();
-        $restaurants.show();
+        $restaurants.show().removeClass("fade");
     } else {
         // If the user is signed in
         $signed_out.hide();
@@ -72,15 +72,19 @@ supabase
             // Add event handlers for all the restaurant buttons
             $(".restaurant").on("click", function() {
                 // Replace the list of restaurants with something else, so hide it
-                $restaurants.hide();
-                if (supabase.auth.user()) {
-                    // If the user is signed in, proceed with the order
-                    $order_details.data("id", $(this).data("id")).show();
-                    $("#order-details .name").text($(this).data("name"));
-                } else {
-                    // If they're not signed in, make them sign in first
-                    $sign_in.show();
-                }
+                // Fade-out animation
+                $restaurants.addClass("fade");
+                setTimeout(() => {
+                    $restaurants.hide();
+                    if (supabase.auth.user()) {
+                        // If the user is signed in, proceed with the order
+                        $order_details.data("id", $(this).data("id")).show();
+                        $("#order-details .name").text($(this).data("name"));
+                    } else {
+                        // If they're not signed in, make them sign in first
+                        $sign_in.show();
+                    }
+                }, 100);
             });
         }
     }, error => show_toast(error, 5000));
@@ -102,7 +106,7 @@ $sign_in.on("submit", e => {
 
 $("#back").on("click", () => {
     $order_details.hide();
-    $restaurants.show();
+    $restaurants.show().removeClass("fade");
 });
 
 $order_details.on("submit", e => {
@@ -126,7 +130,7 @@ $order_details.on("submit", e => {
                 // Reset forms and show restaurant list
                 $("form").trigger("reset");
                 $order_details.hide();
-                $restaurants.show();
+                $restaurants.show().removeClass("fade");
             }
         }, error => show_toast(error, 5000));
 });
