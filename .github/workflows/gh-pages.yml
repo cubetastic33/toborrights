@@ -1,6 +1,7 @@
 name: GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
 
@@ -16,7 +17,7 @@ jobs:
     - name: Build with Parcel
       run: |
         npm install
-        npx parcel build pages/*.html --public-url '/toborrights'
+        npx parcel build pages/*.html --public-url '/toborrights' --detailed-report 10 --log-level verbose --no-cache
 
     - name: Deploy to GitHub Pages
       if: success()
