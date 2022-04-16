@@ -33,8 +33,10 @@
                 <label for="netid">Enter your NetID:</label><br>
                 <input type="text" placeholder="UTD123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
             </div>
-            <br>
-            <button type="submit">Proceed</button>
+            <div class="buttons">
+                <button type="reset" class="back">Back</button>
+                <button type="submit">Proceed</button>
+            </div>
         </form>
         <form id="order-details">
             <h1>Order from <span class="name"></span></h1>
@@ -71,7 +73,7 @@
                 <input type="text" id="delivery-fee" pattern="^[0-9]*\.?[0-9]+">
             </div>
             <div class="buttons">
-                <button type="reset" id="back">Back</button>
+                <button type="reset" class="back">Back</button>
                 <button type="submit">Order</button>
             </div>
         </form>

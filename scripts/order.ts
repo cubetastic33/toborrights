@@ -104,7 +104,8 @@ $sign_in.on("submit", e => {
         .catch(err => show_toast(err.response.text));
 });
 
-$("#back").on("click", () => {
+$(".back").on("click", () => {
+    $sign_in.hide();
     $order_details.hide();
     $restaurants.show().removeClass("fade");
 });
