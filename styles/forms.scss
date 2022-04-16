@@ -4,10 +4,15 @@ form {
     background-color: var(--background-dark);
     border-radius: 10px;
     display: none;
+    font-size: 1rem;
     margin: 2em auto;
     padding: 1em 2em;
     text-align: left;
-    width: 50%;
+    width: 75vw;
+
+    hr {
+        margin: 1em 0;
+    }
 
     h1 {
         font-size: 1.6rem;
@@ -74,10 +79,6 @@ select {
     margin: 0 .5em;
 }
 
-#location {
-    width: 50%;
-}
-
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -106,6 +107,13 @@ button.text:hover {
     background-color: var(--background-hover);
 }
 
+@media screen and (min-width: 1000px) {
+    form {
+        width: 50vw;
+        font-size: 1.2rem;
+    }
+}
+
 @media screen and (min-width: 760px) {
     .form-input {
         flex-direction: row;
@@ -113,5 +121,9 @@ button.text:hover {
 
     input {
         margin: 0 .5em;
+    }
+
+    #location {
+        width: 50%;
     }
 }
