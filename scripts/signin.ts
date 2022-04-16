@@ -33,7 +33,7 @@ supabase.auth.onAuthStateChange((event, session) => {
     // If they were signed out, and just signed in through the magic link, then it would be hidden
     // In that case, redirect them to the order page
     if (event === "SIGNED_IN" && $signed_in.css("display") !== "block")
-        location.href = "/order.html";
+        location.href = "order.html";
     update_dom();
 });
 

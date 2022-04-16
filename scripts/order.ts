@@ -7,7 +7,7 @@ const supabase = createClient("https://gwcnruxqmtukvguyhuga.supabase.co", "eyJhb
 
 // If the user is signed out
 const user = supabase.auth.user();
-if (user === null) location.href = "/";
+if (user === null) location.href = "index.html";
 $(".netid").text(user.email.slice(0, -13).toUpperCase());
 
 $("#sign-out").on("click", () => supabase.auth.signOut()
@@ -16,3 +16,26 @@ $("#sign-out").on("click", () => supabase.auth.signOut()
         location.href = "/";
     })
     .catch(err => show_toast(err.response.text)));
+
+supabase
+    .from("restaurants")
+    .select("name, image")
+    .then(result => {
+        if (result.error) {
+            show_toast(result.error.message, 5000);
+        } else if (result.data.length === 0) {
+            show_toast("No restaurants were found", 5000);
+        } else {
+            for (let i = 0; i < result.data.length; i++) {
+                const { error, publicURL } = supabase.storage.from("restaurant-images").getPublicUrl(result.data[i]["image"]);
+                if (error) {
+                    show_toast(error.message, 5000);
+                    return;
+                }
+                let name = result.data[i]["name"];
+                $(".restaurants").append(`<div class="restaurant" style="background-image: url('${publicURL}')">
+                    <h1>${name}</h1>
+                </div>`);
+            }
+        }
+    }, error => show_toast(error, 5000));

@@ -1,8 +1,7 @@
-const toast = document.getElementById("toast");
-
 export function show_toast(message: string, duration: number = 2000) {
+    const toast = document.getElementById("toast");
     toast.innerText = message;
-    toast.style.display = "fixed";
+    toast.style.display = "block";
     // After duration, slide the toast out of view
     setTimeout(() => toast.className = "slide-down", duration);
     setTimeout(() => {

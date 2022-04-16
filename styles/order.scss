@@ -9,7 +9,6 @@
     margin: 2em;
 
     .restaurant {
-        background: var(--accent);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -29,46 +28,6 @@
             text-align: center;
             width: 100%;
         }
-    }
-
-    .halal {
-        background-image: url(/images/halal.png);
-    }
-
-    .moes {
-        background-image: url(/images/moes.jpg);
-    }
-
-    .panda {
-        background-image: url(/images/panda.jpg);
-    }
-
-    .taco {
-        background-image: url(/images/taco.jpg);
-    }
-
-    .starbucks {
-        background-image: url(/images/starbucks.jpg);
-    }
-
-    .chick {
-        background-image: url(/images/chick.jpg);
-    }
-
-    .papa {
-        background-image: url(/images/papa.jpg);
-    }
-
-    .firehouse {
-        background-image: url(/images/firehouse.jpg);
-    }
-
-    .pub {
-        background-image: url(/images/pub.jpg);
-    }
-
-    .smoothie {
-        background-image: url(/images/smoothie.jpg);
     }
 
     .restaurant:hover {
