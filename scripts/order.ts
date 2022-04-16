@@ -10,6 +10,8 @@ const $signed_out = $("#signed-out");
 const $restaurants = $("#restaurants");
 const $order_details = $("#order-details");
 const $sign_in = $("#sign-in");
+const $my_orders = $("#my-orders");
+const $order_list = $("#order-list");
 
 function show_toast(message: string, duration: number = 2000) {
     $toast.text(message).show();
@@ -25,12 +27,14 @@ function update_dom() {
         $status.hide();
         $signed_out.show();
         $order_details.hide();
+        $my_orders.hide();
         $restaurants.show().removeClass("fade");
     } else {
         // If the user is signed in
         $signed_out.hide();
         $(".netid").text(user.email.slice(0, -13).toUpperCase());
         $status.show();
+        insert_orders();
     }
 }
 
@@ -38,6 +42,60 @@ function update_dom() {
 update_dom();
 // Run whenever auth state changes
 supabase.auth.onAuthStateChange(update_dom);
+
+function insert_orders() {
+    supabase
+        .from("orders")
+        .select("id, time_slot, restaurants (name), delivery_location, description, fulfilled, notes, cost")
+        .filter("cancelled", "eq", "false")
+        .order("created_at")
+        .then(result => {
+            if (result.error) {
+                show_toast(result.error.message, 5000);
+            }
+            if (result.data.length === 0) {
+                $my_orders.hide();
+                return;
+            } else $my_orders.show();
+            $order_list.empty();
+            for (let i = 0; i < result.data.length; i++) {
+                let new_order = $(`<div class="order">
+                    <b>Timeslot:</b> ${result.data[i]["time_slot"]}<br>
+                    <b>Restaurant:</b> ${result.data[i]["restaurants"]["name"]}<br>
+                    <b>Description:</b> ${result.data[i]["description"]}<br>
+                    <b>Delivery Location:</b> ${result.data[i]["delivery_location"]}<br>
+                    <b>Delivery Fee:</b> ${result.data[i]["cost"]}
+                </div>`);
+                if (result.data[i]["notes"])
+                    new_order.append(`<b>Phone:</b> ${result.data[i]["notes"]}`);
+                if (result.data[i]["fulfilled"])
+                    new_order.append(`<span class="top-right">Fulfilled</span>`);
+                else
+                    new_order.append(`<span class="top-right">
+                        <button class="text cancel" data-id="${result.data[i]["id"]}">cancel</button>
+                    </span>`);
+                $order_list.append(new_order);
+            }
+            $(".cancel").off().on("click", function() {
+                supabase
+                    .from("orders")
+                    .update({ cancelled: true })
+                    .match({ id: $(this).data("id") })
+                    .then(result => {
+                        if (result.error) show_toast(result.error.message);
+                        else show_toast("Cancelled order");
+                    });
+            });
+        }, error => show_toast(error, 5000));
+}
+
+supabase
+    .from("orders")
+    .on("*", payload => {
+        console.log('Change received!', payload);
+        insert_orders();
+    })
+    .subscribe();
 
 $("#sign-out").on("click", () => supabase.auth.signOut()
     .then(_response => {
