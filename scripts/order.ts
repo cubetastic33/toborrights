@@ -17,9 +17,10 @@ $("#sign-out").on("click", () => supabase.auth.signOut()
     })
     .catch(err => show_toast(err.response.text)));
 
+// Dynamically populate the list of restaurants from the database
 supabase
     .from("restaurants")
-    .select("name, image")
+    .select()
     .then(result => {
         if (result.error) {
             show_toast(result.error.message, 5000);
@@ -32,10 +33,28 @@ supabase
                     show_toast(error.message, 5000);
                     return;
                 }
+                let id = result.data[i]["id"];
                 let name = result.data[i]["name"];
-                $(".restaurants").append(`<div class="restaurant" style="background-image: url('${publicURL}')">
-                    <h1>${name}</h1>
-                </div>`);
+                $(".restaurants").append(`<div class="restaurant"
+                    data-id="${id}" data-name="${name}"
+                    style="background-image: url('${publicURL}')">
+                        <h1>${name}</h1>
+                    </div>`);
             }
+            $(".restaurant").on("click", function() {
+                $(".restaurants").hide();
+                $("#order-details").data("id", $(this).data("id")).show();
+                $("#order-details .name").text($(this).data("name"));
+            });
         }
     }, error => show_toast(error, 5000));
+
+$("#back").on("click", () => {
+    $("#order-details").hide();
+    $(".restaurants").show();
+});
+
+$("#order-details").on("submit", e => {
+    e.preventDefault();
+    console.log($("#description").val());
+});

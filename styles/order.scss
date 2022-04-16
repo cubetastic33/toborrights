@@ -20,7 +20,7 @@
             background-color: #fffa;
             border-radius: 0 0 10px 10px;
             color: #000;
-            font-size: 1.75rem;
+            font-size: 1.4rem;
             position: absolute;
             bottom: 0;
             margin: 0;
@@ -32,5 +32,57 @@
 
     .restaurant:hover {
         box-shadow: 0 0 6px 2px rgba(15, 15, 15, 1);
+    }
+}
+
+#order-details {
+    background-color: var(--background-dark);
+    border-radius: 10px;
+    display: none;
+    margin: 2em auto;
+    padding: 1em 2em;
+    text-align: left;
+    width: 50%;
+
+    h1 {
+        font-size: 1.6rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: .5em;
+    }
+}
+
+textarea {
+    background: transparent;
+    border: 1px solid var(--foreground);
+    border-radius: 4px;
+    color: var(--foreground);
+    font-family: sans-serif;
+    font-size: 1em;
+    margin: 1em 0;
+    width: 100%;
+}
+
+select {
+    font-size: .9em;
+    margin: 0 .5em;
+}
+
+#location {
+    width: 50%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0 1em 0;
+}
+
+@media screen and (min-width: 420px) {
+    .restaurant h1 {
+        font-size: 1.75rem;
     }
 }
