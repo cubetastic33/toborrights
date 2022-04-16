@@ -8,38 +8,78 @@
     <meta name="description" content="Defend Tobor rights! Order food using a HumanTobor today!">
     <title>Tobor Rights</title>
     <link rel="stylesheet" href="/styles/main.scss">
+    <link rel="stylesheet" href="/styles/restaurants.scss">
+    <link rel="stylesheet" href="/styles/forms.scss">
     <link rel="icon" href="/images/eater1.png" type="image/x-icon">
 </head>
 <body>
     <header>
-        <h1><a href="index.html">Book a HumanTobor</a></h1>
+        <h1>Book a HumanTobor</h1>
     </header>
     <main>
-        <section id="sign-in">
-            <p>Defend Tobor rights! Order food using a HumanTobor today!</p>
-            <form>
-                <div class="form-input">
-                    <label for="netid">Enter your NetID:</label><br>
-                    <input type="text" placeholder="UTD123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
-                </div>
-                <br>
-                <button type="submit">Proceed</button>
-            </form>
-            <section class="signed-in">
-                <div class="status">
-                    <div>
-                        Or order as <b class="netid"></b>
-                    </div>
-                    <span class="divider"></span>
-                    <a href="order.html" class="button">Order</a>
-                </div>
-            </section>
-        </section>
+        <div id="status">
+            <div>
+                Ordering as <span class="netid"></span>
+            </div>
+            <span class="divider"></span>
+            <button id="sign-out" class="text">Sign Out</button>
+        </div>
+        <div id="signed-out">
+            Defend Tobor rights! Order food using a HumanTobor today!
+        </div>
+        <div id="restaurants"></div>
+        <form id="sign-in">
+            <div class="form-input">
+                <label for="netid">Enter your NetID:</label><br>
+                <input type="text" placeholder="UTD123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
+            </div>
+            <br>
+            <button type="submit">Proceed</button>
+        </form>
+        <form id="order-details">
+            <h1>Order from <span class="name"></span></h1>
+            <br>
+            <label for="description">Order Description:</label><br>
+            <textarea id="description" rows="5" required></textarea>
+            <p>Note: only on-campus locations will be taken. No Northside.</p>
+            <div class="form-input">
+                <label for="location">Where to deliver:</label>
+                <input type="text" id="location" placeholder="1.123 RHW, 955 North Loop Road" required>
+            </div>
+            <br>
+            <div class="form-input">
+                <label for="time-slot">Time Slot:</label>
+                <select id="time-slot">
+                    <option value="11:00">11:00 - 11:30</option>
+                    <option value="11:30">11:30 - 12:00</option>
+                    <option value="12:00">12:00 - 12:30</option>
+                    <option value="12:30">12:30 - 13:00</option>
+                    <option value="13:00">13:00 - 13:30</option>
+                    <option value="13:30">13:30 - 14:00</option>
+                </select>
+            </div>
+            <br>
+            <p>Optionally provide a phone number, in case we need to contact you.</p>
+            <div class="form-input">
+                <label for="phone">Phone number</label>
+                <input type="number" id="phone">
+            </div>
+            <br>
+            <p>The delivery fee is also optional, and up to you. All proceeds go to charity.</p>
+            <div class="form-input">
+                <label for="delivery-fee">Delivery fee</label>
+                <input type="text" id="delivery-fee" pattern="^[0-9]*\.?[0-9]+">
+            </div>
+            <div class="buttons">
+                <button type="reset" id="back">Back</button>
+                <button type="submit">Order</button>
+            </div>
+        </form>
     </main>
     <footer>
         © 2022 | CACP
     </footer>
     <div id="toast">foo</div>
 </body>
-<script type="module" src="/scripts/signin.ts"></script>
+<script type="module" src="/scripts/order.ts"></script>
 </html>
