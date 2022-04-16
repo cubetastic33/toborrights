@@ -5,38 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Stop abusing Tobors! Order food using a HumanTobor today!">
+    <meta name="description" content="Defend Tobor rights! Order food using a HumanTobor today!">
     <title>Tobor Rights</title>
     <link rel="stylesheet" href="/styles/main.scss">
     <link rel="icon" href="/images/eater1.png" type="image/x-icon">
 </head>
 <body>
     <header>
-        <h1>Book a HumanTobor</h1>
+        <h1><a href="/">Book a HumanTobor</a></h1>
     </header>
     <main>
-        <section class="signed-out">
-            <p>Stop abusing Tobors! Order food using a HumanTobor today!</p>
+        <section id="sign-in">
+            <p>Defend Tobor rights! Order food using a HumanTobor today!</p>
             <form>
                 <div class="form-input">
                     <label for="netid">Enter your NetID:</label><br>
-                    <input type="text" placeholder="UTD123456" id="netid" required>
+                    <input type="text" placeholder="UTD123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
                 </div>
                 <br>
                 <button type="submit">Proceed</button>
             </form>
-        </section>
-        <section class="signed-in">
-            <div class="status">
-                <div>
-                    Ordering as <span class="netid"></span>
+            <section class="signed-in">
+                <div class="status">
+                    <div>
+                        Or order as <b class="netid"></b>
+                    </div>
+                    <span class="divider"></span>
+                    <a href="order.html" class="button">Order</a>
                 </div>
-                <span class="divider"></span>
-                <button id="sign-out" class="text">Sign Out</button>
-            </div>
-            <div class="restaurants">
-                <div class="restaurant"></div>
-            </div>
+            </section>
         </section>
     </main>
     <footer>
@@ -44,5 +41,5 @@
     </footer>
     <div id="toast">foo</div>
 </body>
-<script type="module" src="/scripts/main.ts"></script>
+<script type="module" src="/scripts/signin.ts"></script>
 </html>

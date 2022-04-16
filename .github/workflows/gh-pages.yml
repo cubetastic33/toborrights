@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -16,7 +16,7 @@ jobs:
     - name: Build with Parcel
       run: |
         npm install
-        npx parcel build index.html --public-url '/toborrights'
+        npx parcel build pages/*.html --public-url '/toborrights'
 
     - name: Deploy to GitHub Pages
       if: success()
