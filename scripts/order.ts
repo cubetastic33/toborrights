@@ -130,9 +130,9 @@ supabase
             // Add event handlers for all the restaurant buttons
             $(".restaurant").on("click", function() {
                 // Analytics
-                let restaurant_name = $(this).data("name");
+                let name = $(this).data("name");
                 // @ts-ignore
-                if (typeof pa !== "undefined") pa.track({name: "restaurant-click", value: restaurant_name});
+                if (typeof pa !== "undefined") pa.track({name});
                 // Replace the list of restaurants with something else, so hide it
                 // Fade-out animation
                 $restaurants.addClass("fade");
@@ -141,7 +141,7 @@ supabase
                     if (supabase.auth.user()) {
                         // If the user is signed in, proceed with the order
                         $order_details.data("id", $(this).data("id")).show();
-                        $("#order-details .name").text(restaurant_name);
+                        $("#order-details .name").text(name);
                     } else {
                         // If they're not signed in, make them sign in first
                         $sign_in.show();
