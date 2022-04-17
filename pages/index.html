@@ -36,10 +36,8 @@
         </div>
         <div id="restaurants"></div>
         <form id="sign-in">
-            <div class="form-input">
-                <label for="netid">Enter your NetID:</label><br>
-                <input type="text" placeholder="UTD123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
-            </div>
+            <p>Please provide your UT Dallas NetID. We use it to send you a verification email, helping us fight spam</p>
+            <input type="text" placeholder="NET123456" id="netid" pattern="^[a-zA-Z]{3}[0-9]{6}" required>
             <div class="buttons">
                 <button type="reset" class="back">Back</button>
                 <button type="submit">Proceed</button>
@@ -50,35 +48,45 @@
             <hr>
             <label for="description">Order Description:</label><br>
             <textarea id="description" rows="5" required></textarea>
-            <p>Note: only on-campus locations will be taken. No Northside.</p>
+            <br><br>
             <div class="form-input">
                 <label for="location">Where to deliver:</label>
-                <input type="text" id="location" placeholder="1.123 RHW, 955 North Loop Road" required>
+                <input type="text" id="location" placeholder="SU stairs, plinth side - I'll wave" required>
             </div>
-            <br>
+            <p>
+                We deliver to most locations on campus! Unfortunately, due to their distance from
+                the heart of campus, we do not deliver to Northside, Canyon Creek Heights, or
+                University Village phases 1-3. Additionally, if you are in University Commons,
+                please meet your HumanTobor either in the lobby or right outside your Residence Hall.
+            </p>
+            <br><br>
             <div class="form-input">
                 <label for="time-slot">Time Slot:</label>
                 <select id="time-slot">
-                    <option value="11:00">11:00 - 11:30</option>
-                    <option value="11:30">11:30 - 12:00</option>
-                    <option value="12:00">12:00 - 12:30</option>
-                    <option value="12:30">12:30 - 13:00</option>
-                    <option value="13:00">13:00 - 13:30</option>
-                    <option value="13:30">13:30 - 14:00</option>
+                    <option value="11:00">11:00 AM - 11:30 AM</option>
+                    <option value="11:30">11:30 AM - 12:00 PM</option>
+                    <option value="12:00">12:00 PM - 12:30 PM</option>
+                    <option value="12:30">12:30 PM - 1:00 PM</option>
+                    <option value="13:00">1:00 PM - 1:30 PM</option>
+                    <option value="13:30">1:30 PM - 2:00 PM</option>
                 </select>
             </div>
-            <br>
-            <p>Optionally provide a phone number, in case we need to contact you.</p>
+            <br><br>
             <div class="form-input">
                 <label for="phone">Phone number:</label>
                 <input type="tel" id="phone">
             </div>
-            <br>
-            <p>The delivery fee is also optional, and up to you. All proceeds go to charity.</p>
+            <p>Optionally provide a phone number, in case we need to contact you.</p>
+            <br><br>
             <div class="form-input">
                 <label for="delivery-fee">Delivery fee:</label>
                 <input type="text" id="delivery-fee" pattern="^[0-9]*\.?[0-9]+">
             </div>
+            <p>
+                All proceeds go in equal part to the Electronic Frontier Foundation, Partners in
+                Health, and Health in Harmony. While we don't require a delivery fee, your
+                contribution to our efforts to raise money for these charities is greatly appreciated.
+            </p>
             <div class="buttons">
                 <button type="reset" class="back">Back</button>
                 <button type="submit">Order</button>
