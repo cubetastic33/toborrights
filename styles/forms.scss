@@ -55,7 +55,7 @@ label {
     font-size: 1.4rem;
 }
 
-input {
+input, select {
     appearance: none;
     background: transparent;
     border-color: var(--foreground);
@@ -89,6 +89,7 @@ textarea {
 select {
     font-size: .9em;
     margin: 0 .5em;
+    padding: 0 .5em;
 }
 
 .buttons {
