@@ -138,7 +138,14 @@ p {
 }
 
 footer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
     padding: 1rem;
+
+    span {
+        width: 2em;
+    }
 
     a {
         color: var(--foreground);
