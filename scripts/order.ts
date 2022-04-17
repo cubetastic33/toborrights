@@ -64,7 +64,7 @@ function insert_orders() {
                     <b>Restaurant:</b> ${result.data[i]["restaurants"]["name"]}<br>
                     <b>Description:</b> ${result.data[i]["description"]}<br>
                     <b>Delivery Location:</b> ${result.data[i]["delivery_location"]}<br>
-                    <b>Delivery Fee:</b> ${result.data[i]["cost"]}
+                    <b>Donation:</b> ${result.data[i]["cost"]}
                 </div>`);
                 if (result.data[i]["notes"])
                     new_order.append(`<b>Phone:</b> ${result.data[i]["notes"]}`);
@@ -185,7 +185,7 @@ $order_details.on("submit", e => {
             delivery_location: $("#location").val(),
             description: $("#description").val(),
             notes: phone.length ? phone : null,
-            cost: $("#delivery-fee").val(),
+            cost: $("#donation").val(),
         })
         .then((result) => {
             if (result.error) {
