@@ -67,7 +67,8 @@ input, select {
 }
 
 ::placeholder {
-    opacity: .2;
+    color: var(--foreground);
+    opacity: .25;
 }
 
 input:focus {
