@@ -48,7 +48,7 @@ function insert_orders() {
         .from("orders")
         .select("id, time_slot, restaurants (name), delivery_location, description, fulfilled, notes, cost")
         .filter("cancelled", "eq", "false")
-        .order("created_at")
+        .order("created_at", { ascending: false })
         .then(result => {
             if (result.error) {
                 show_toast(result.error.message, 5000);
