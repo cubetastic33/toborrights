@@ -129,6 +129,9 @@ supabase
             }
             // Add event handlers for all the restaurant buttons
             $(".restaurant").on("click", function() {
+                // Analytics
+                // @ts-ignore
+                if (typeof pa !== "undefined") pa.track({name: "restaurant-click", value: $(this).data("name")});
                 // Replace the list of restaurants with something else, so hide it
                 // Fade-out animation
                 $restaurants.addClass("fade");
