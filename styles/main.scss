@@ -139,6 +139,10 @@ p {
 
 footer {
     padding: 1rem;
+
+    a {
+        color: var(--foreground);
+    }
 }
 
 // Toast
