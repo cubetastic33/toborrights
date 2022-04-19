@@ -48,6 +48,10 @@
             <hr>
             <label for="description">Order Description:</label><br>
             <textarea id="description" rows="5" required></textarea>
+            <p class="menu">
+                <span><a href="" class="menu">Here</a>'s the menu, </span>use the textfield above to
+                tell us what you want.
+            </p>
             <br><br>
             <div class="form-input">
                 <label for="location">Where to deliver:</label>
@@ -81,7 +85,9 @@
             <br><br>
             <div class="form-input">
                 <label for="donation">Donation:</label>
-                <input type="text" id="donation" pattern="^[0-9]*\.?[0-9]+">
+                <span class="currency">
+                    <input type="text" id="donation" pattern="^[0-9]+\.?[0-9]?[0-9]?">
+                </span>
             </div>
             <p>
                 All proceeds go in equal part to the <a href="https://www.eff.org">Electronic

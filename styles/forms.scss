@@ -46,6 +46,10 @@ form {
     }
 }
 
+.menu:first-letter {
+    text-transform: uppercase;
+}
+
 .form-input {
     display: flex;
     flex-direction: column;
@@ -91,6 +95,16 @@ select {
     font-size: .9em;
     margin: 0 .5em;
     padding: 0 .5em;
+}
+
+.currency:before {
+    position: absolute;
+    content:"$";
+    transform: translate(.25em, .25em);
+}
+
+.currency input {
+    margin-left: 1em;
 }
 
 .buttons {

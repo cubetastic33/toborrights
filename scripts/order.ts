@@ -121,8 +121,9 @@ supabase
                 }
                 let id = result.data[i]["id"];
                 let name = result.data[i]["name"];
+                let menu = result.data[i]["menu"];
                 $restaurants.append(`<div class="restaurant"
-                    data-id="${id}" data-name="${name}"
+                    data-id="${id}" data-name="${name}" data-menu="${menu}"
                     style="background-image: url('${publicURL}')">
                         <h1>${name}</h1>
                     </div>`);
@@ -141,6 +142,12 @@ supabase
                     if (supabase.auth.user()) {
                         // If the user is signed in, proceed with the order
                         $order_details.data("id", $(this).data("id")).show();
+                        if ($(this).data("menu")) {
+                            $("#order-details .menu a").attr("href", $(this).data("menu"));
+                            $("#order-details .menu span").css("display", "inline");
+                        } else {
+                            $("#order-details .menu span").hide();
+                        }
                         $("#order-details .name").text(name);
                     } else {
                         // If they're not signed in, make them sign in first
