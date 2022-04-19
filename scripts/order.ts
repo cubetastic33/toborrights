@@ -183,6 +183,7 @@ $order_details.on("submit", e => {
     e.preventDefault();
     // Make the order by adding it to the database
     const phone = $("#phone").val();
+    const identifier = $("#identifier").val();
     supabase
         .from("orders")
         .insert({
@@ -191,6 +192,7 @@ $order_details.on("submit", e => {
             restaurant: $order_details.data("id"),
             delivery_location: $("#location").val(),
             description: $("#description").val(),
+            identifier: identifier.length ? identifier : null,
             notes: phone.length ? phone : null,
             cost: $("#donation").val(),
         })
