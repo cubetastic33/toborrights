@@ -46,7 +46,7 @@ supabase.auth.onAuthStateChange(update_dom);
 function insert_orders() {
     supabase
         .from("orders")
-        .select("id, time_slot, restaurants (name), delivery_location, description, fulfilled, notes, cost")
+        .select("id, time_slot, restaurants (name), delivery_location, description, fulfilled, phone, donation")
         .filter("cancelled", "eq", "false")
         .order("created_at", { ascending: false })
         .then(result => {
@@ -64,10 +64,10 @@ function insert_orders() {
                     <b>Restaurant:</b> ${result.data[i]["restaurants"]["name"]}<br>
                     <div class="desc"><b>Description:</b> ${result.data[i]["description"]}</div><br>
                     <b>Delivery Location:</b> ${result.data[i]["delivery_location"]}<br>
-                    <b>Donation:</b> ${result.data[i]["cost"]}
+                    <b>Donation:</b> ${result.data[i]["donation"]}
                 </div>`);
-                if (result.data[i]["notes"])
-                    new_order.append(`<b>Phone:</b> ${result.data[i]["notes"]}`);
+                if (result.data[i]["phone"])
+                    new_order.append(`<b>Phone:</b> ${result.data[i]["phone"]}`);
                 if (result.data[i]["fulfilled"])
                     new_order.append(`<span class="top-right">Fulfilled</span>`);
                 else
@@ -193,8 +193,8 @@ $order_details.on("submit", e => {
             delivery_location: $("#location").val(),
             description: $("#description").val(),
             identifier: identifier.length ? identifier : null,
-            notes: phone.length ? phone : null,
-            cost: $("#donation").val(),
+            phone: phone.length ? phone : null,
+            donation: $("#donation").val(),
         })
         .then((result) => {
             if (result.error) {
