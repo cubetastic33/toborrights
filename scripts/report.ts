@@ -61,7 +61,34 @@ function timeslot_load_report () {
 
 supabase.from("orders").on("*", timeslot_load_report).subscribe();
 
+function restaurant_distribution_report () {
+  supabase.from("restaurant_distribution").
+    select("restaurant, count").
+    throwOnError().
+    then(({ data }) => {
+      const table = $("<table></table>");
+
+      table.append($("<thead><h2>Restaurant Distribution Report</h2></thead>"));
+      const body = $("<tbody></tbody>");
+      for (const { restaurant, count } of data) {
+        body.append($(`
+        <tr>
+        <td>${restaurant}</td>
+        <td>${count}</td>
+        </tr>
+      `));
+      }
+      table.append(body);
+      $("#restaurant-distribution-report").append(table);
+    });
+}
+
+supabase.from("orders").on("*", restaurant_distribution_report).subscribe();
+
 // load report all initially
-const reports = [donation_report, timeslot_load_report];
+const reports = [
+  donation_report,
+  timeslot_load_report,
+  restaurant_distribution_report];
 $(document).ready(() => $.each(reports, $.call));
 
