@@ -36,8 +36,6 @@ function donation_report () {
     });
 }
 
-supabase.from("orders").on("*", donation_report).subscribe();
-
 function timeslot_load_report () {
   supabase.from("time_slot_load").
     select("time_slot, count").
@@ -45,7 +43,7 @@ function timeslot_load_report () {
     then(({ data }) => {
       const table = $("<table></table>");
       table.append($("<thead><h2>Time Slot Load Report</h2></thead>"));
-      let body = $("<tbody></tbody>");
+      const body = $("<tbody></tbody>");
       for (const { time_slot, count } of data) {
         body.append($(`
         <tr>
@@ -58,8 +56,6 @@ function timeslot_load_report () {
       $("#timeslot-load-report").append(table);
     });
 }
-
-supabase.from("orders").on("*", timeslot_load_report).subscribe();
 
 function restaurant_distribution_report () {
   supabase.from("restaurant_distribution").
@@ -83,12 +79,14 @@ function restaurant_distribution_report () {
     });
 }
 
-supabase.from("orders").on("*", restaurant_distribution_report).subscribe();
-
-// load report all initially
 const reports = [
   donation_report,
   timeslot_load_report,
   restaurant_distribution_report];
-$(document).ready(() => $.each(reports, $.call));
 
+const update_dom = () => $.each(reports, $.call);
+
+// load report all initially
+$(document).ready(update_dom);
+// reload on database changes
+supabase.from("orders").on("*", update_dom).subscribe();
