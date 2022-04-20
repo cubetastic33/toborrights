@@ -20,7 +20,7 @@ function donation_report () {
     <td>${data.total}</td>
   </tr>
   <tr>
-    <td>Count</td>
+    <td>Orders</td>
     <td>${data.count}</td>
   </tr>
   <tr>
