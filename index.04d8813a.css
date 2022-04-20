@@ -1,0 +1,2 @@
+#my-orders{display:none}#my-orders hr{margin:1em 2em}#order-list{width:90vw;grid-auto-flow:column;margin:auto;display:grid;overflow:auto}.order{text-align:left;background-color:var(--background-dark);min-width:max-content;max-width:600px;border-radius:10px;margin:1em;padding:1em 3em 1em 1em;position:relative}.order .desc{max-width:500px;word-wrap:break-word;display:inline-block}.top-right{font-size:1rem;position:absolute;top:.75em;right:.75em}.cancel{padding:.25em .75em}
+/*# sourceMappingURL=index.04d8813a.css.map */
