@@ -56,7 +56,6 @@ function timeslot_load_report () {
       }
       table.append(body);
       $("#timeslot-load-report").append(table);
-      console.log("jfoiwjfoew");
     });
 }
 
