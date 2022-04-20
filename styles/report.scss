@@ -1,0 +1,17 @@
+.report-section {
+  table {
+    margin: 0 auto;
+    tr {
+      td {
+        padding: 3px;
+
+        &:first-child {
+          text-align: right;
+        }
+        &:last-child {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
