@@ -62,7 +62,7 @@ function insert_orders() {
                 let new_order = $(`<div class="order">
                     <b>Timeslot:</b> ${result.data[i]["time_slot"]}<br>
                     <b>Restaurant:</b> ${result.data[i]["restaurants"]["name"]}<br>
-                    <b>Description:</b> ${result.data[i]["description"]}<br>
+                    <div class="desc"><b>Description:</b> ${result.data[i]["description"]}</div><br>
                     <b>Delivery Location:</b> ${result.data[i]["delivery_location"]}<br>
                     <b>Donation:</b> ${result.data[i]["cost"]}
                 </div>`);
